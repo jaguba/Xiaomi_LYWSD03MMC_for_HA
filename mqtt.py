@@ -13,14 +13,16 @@ import ble
 ssid = 'FARLEIGH'
 password = 'MK4Lxq7aiuuU'
 mqtt_server = '192.168.0.99'
-#EXAMPLE IP ADDRESS
-#mqtt_server = '192.168.1.144'
+mqtt_port = 1883
+mqtt_username = b"mqttuser"
+mqtt_password = b"jJnlSM09Eh"
+
 client_id = ubinascii.hexlify(machine.unique_id())
 topic_pub = b'espble'
 
 def connect():
   global client_id, mqtt_server, topic_sub
-  client = MQTTClient(client_id, mqtt_server)
+  client = MQTTClient(client_id, mqtt_server, mqtt_port, mqtt_username, mqtt_password)
   client.connect()
   print('Connected to {} MQTT broker'.format(mqtt_server))
   return client
