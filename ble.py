@@ -38,9 +38,9 @@ def timestamp(type='timestamp'):
         return '{:04d}-{:02d}-{:02d} {:02d}:{:02d}:{:02d}'.format(yy,mm,dd,hh,MM,ss)
 
 def debug(message, fname = 'ble.log'):
-    f = open(fname,'a')
-    f.write(timestamp() + ' ' + message +'\n')
-    f.close()
+    #f = open(fname,'a')
+    #f.write(timestamp() + ' ' + message +'\n')
+    #f.close()
     print(message)
     
 class ble:
@@ -246,13 +246,11 @@ class ble:
                 return False
         return True
             
-        
     def disconnect(self):
         try:
             conn = self.bt.gap_disconnect(self.conn_handle)
         except Exception as e:
             debug('Error: Disconnect ' + str(e))
-
 
         # returns false on timeout
         timer = 0
